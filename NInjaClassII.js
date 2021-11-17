@@ -5,6 +5,9 @@ class Ninja {
         this.health = health;
         this.speed = speed;
         this.strength = strength;
+        if(this.health = undefined){
+            this.health = 100;
+        }
     }*/
 
     constructor(name){
@@ -16,33 +19,48 @@ class Ninja {
         this.showStats = function() {
             console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + speed + ", Strength: " + strength);
         }
-
+        this.kick = function(ninja) {
+            var damage = ninja.health -= 15 * strength;
+            console.log("The Ninja " + ninja.name + " was kicked by " + name + " and lost " +damage+ " Health!");
+        }
     }
     
     sayName() {
         console.log("My name is " + this.name)
     }
 
-    
-
     drinkSake() {
         this.health += 10;
     }
 
+    punch(ninja) {
+        ninja.health -= 5;
+        console.log("The Ninja " + ninja.name + " was punched and lost 5 Health!")
+        //return this;
+    }
 
+    
 
 }
 
 /*let alex = new Ninja( "Alex", 500, 25, 15 );
 console.log( alex );
 alex.showStats();*/
-console.log( "*******************************************************" );
+//console.log( "*******************************************************" );
 let Akali = new Ninja( "Akali");
-console.log( Akali );
+let Shen = new Ninja( "Shen");
+Shen.showStats();
+Akali.punch(Shen);
+Shen.showStats();
+console.log( "*******************************************************" );
 Akali.showStats();
-Akali.sayName();
-Akali.drinkSake();
+Shen.kick(Akali);
 Akali.showStats();
+// console.log( Akali );
+// Akali.showStats();
+// Akali.sayName();
+// Akali.drinkSake();
+// Akali.showStats();
 
 /*
 	function Ninja(name) {
